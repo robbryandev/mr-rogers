@@ -67,16 +67,54 @@ Number.prototype.countArray = function () {
   return res.length > 0 ? res : [0];
 };
 
+Number.prototype.random = function() {
+  return Math.floor(Math.random() * this);
+}
+
+// HtmlInputElement Method that returns an expanded number array with string replacements
+HTMLInputElement.prototype.getTextArray = function() {
+  const numReplace = [1, 2, 3];
+  const strReplace = ["Beep!", "Boop!", "Won't you be my neighbor?"];
+  const replaceVar = new ReplaceObject(numReplace, strReplace);
+  return replaceVar.isValid() ? new RogerArray(this.value.parseInt().countArray(), replaceVar).replace() : null;
+}
+
 // User interface logic
+
+// HtmlDivElement Method that removes add child elements
+HTMLDivElement.prototype.removeChildAll = function() {
+  while (this.lastChild) {
+    this.removeChild(this.lastChild);
+  }
+}
+
 function submitForm(event) {
   event.preventDefault();
-  console.log(
-    document.getElementById("user-number").value.parseInt().countArray()
-  );
+  const formNum = document.getElementById("user-number");
+  const resElement = document.querySelector(".results");
+  resElement.removeChildAll();
+  const textArray = formNum.getTextArray();
+  if (textArray) {
+    textArray.forEach(function(val) {
+      let word = document.createElement("p");
+      word.innerText = val;
+      resElement.appendChild(word);
+    });
+  }
 }
 
 // Page load
 addEventListener("load", function () {
-  const numberForm = document.querySelector("form");
-  numberForm.addEventListener("submit", submitForm);
+  document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault();
+  })
+  document.getElementById("btn-submit").addEventListener("click", submitForm)
+  document.getElementById("btn-rand").addEventListener("click", function() {
+    const max = 100;
+    document.getElementById("user-number").value = max.random();
+    document.querySelector(".results").removeChildAll();
+  });
+  document.getElementById("btn-reset").addEventListener("click", function() {
+    document.querySelector(".results").removeChildAll();
+  });
 });
