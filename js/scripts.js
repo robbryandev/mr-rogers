@@ -38,9 +38,14 @@ RogerArray.prototype.replace = function () {
   let res = [];
   this.numCountArray.forEach(function (num) {
     const rep = self.repObject;
-    if (rep.numArray.includes(num)) {
-      res.push(rep.strArray[rep.numArray.indexOf(num)]);
-    } else {
+    let replaced = false;
+    rep.numArray.forEach(function (repNum) {
+      if (`${num}`.includes(`${repNum}`)) {
+        replaced = true;
+        res.push(rep.strArray[rep.numArray.indexOf(repNum)]);
+      }
+    });
+    if (!replaced) {
       res.push(num);
     }
   });
