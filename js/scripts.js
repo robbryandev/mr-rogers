@@ -32,7 +32,7 @@ class RogerArray {
   }
 }
 
-RogerArray.prototype.replace = function () {
+RogerArray.prototype.replace = function() {
   let self = this;
   let res = [];
   this.numCountArray.forEach(function (num) {
@@ -54,12 +54,12 @@ RogerArray.prototype.replace = function () {
 // Methods for Standard objects
 
 // String method that returns provided string as a number or 0 instead of NaN
-String.prototype.parseInt = function () {
+String.prototype.parseInt = function() {
   return !Number(this.trim()) ? 0 : parseInt(this.trim());
 };
 
 // Number method that gets an array from 0 to the number provided
-Number.prototype.countArray = function () {
+Number.prototype.countArray = function() {
   let res = [];
   for (let i = 0; i <= this; i++) {
     res.push(i);
@@ -75,9 +75,15 @@ Number.prototype.random = function() {
 // User interface logic
 
 // HtmlInputElement Method that returns an expanded number array with string replacements
-HTMLInputElement.prototype.getTextArray = function() {
+HTMLInputElement.prototype.getTextArray = function(userName = "") {
   const numReplace = [1, 2, 3];
-  const strReplace = ["Beep!", "Boop!", "Won't you be my neighbor?"];
+  let question;
+  if (userName) {
+    question = `Won't you be my neighbor, ${userName}?`
+  } else {
+    question = "Won't you be my neighbor?"
+  }
+  const strReplace = ["Beep!", "Boop!", question];
   const replaceVar = new ReplaceObject(numReplace, strReplace);
   return replaceVar.isValid() ? new RogerArray(this.value.parseInt().countArray(), replaceVar).replace() : null;
 }
@@ -97,7 +103,7 @@ function submitForm(event) {
   const resElement = document.querySelector(".results");
   const reversed = document.getElementById("reverse-box").checked;
   resElement.removeChildAll();
-  let textArray = formNum.getTextArray();
+  let textArray = formNum.getTextArray(document.getElementById("user-name").value);
   if (reversed) {
     textArray.reverse();  
   }
@@ -112,10 +118,10 @@ function submitForm(event) {
 }
 
 // Page load
-addEventListener("load", function () {
+addEventListener("load", function() {
   document.querySelector("form").addEventListener("submit", function(event) {
     event.preventDefault();
-  })
+  });
   document.getElementById("btn-submit").addEventListener("click", submitForm)
   document.getElementById("btn-rand").addEventListener("click", function() {
     const max = 100;
@@ -124,7 +130,7 @@ addEventListener("load", function () {
   });
   document.getElementById("user-number").addEventListener("change", function() {
     document.querySelector(".results").removeChildAll();
-  })
+  });
   document.getElementById("btn-reset").addEventListener("click", function() {
     document.querySelector(".results").removeChildAll();
   });
