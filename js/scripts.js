@@ -95,8 +95,12 @@ function submitForm(event) {
   event.preventDefault();
   const formNum = document.getElementById("user-number");
   const resElement = document.querySelector(".results");
+  const reversed = document.getElementById("reverse-box").checked;
   resElement.removeChildAll();
-  const textArray = formNum.getTextArray();
+  let textArray = formNum.getTextArray();
+  if (reversed) {
+    textArray.reverse();  
+  }
   if (textArray) {
     textArray.forEach(function(val) {
       let word = document.createElement("li");
@@ -118,6 +122,9 @@ addEventListener("load", function () {
     document.getElementById("user-number").value = max.random();
     document.querySelector(".results").removeChildAll();
   });
+  document.getElementById("user-number").addEventListener("change", function() {
+    document.querySelector(".results").removeChildAll();
+  })
   document.getElementById("btn-reset").addEventListener("click", function() {
     document.querySelector(".results").removeChildAll();
   });

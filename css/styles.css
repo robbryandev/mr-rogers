@@ -11,6 +11,15 @@
 }
 
 /* Elements */
+body {
+  background-color: #707483;
+  color: white;
+}
+
+li {
+  color: black;
+}
+
 li:hover {
   background-color: var(--success);
   color: white;
