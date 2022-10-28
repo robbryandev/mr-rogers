@@ -72,6 +72,8 @@ Number.prototype.random = function() {
   return Math.floor(Math.random() * this);
 }
 
+// User interface logic
+
 // HtmlInputElement Method that returns an expanded number array with string replacements
 HTMLInputElement.prototype.getTextArray = function() {
   const numReplace = [1, 2, 3];
@@ -80,9 +82,8 @@ HTMLInputElement.prototype.getTextArray = function() {
   return replaceVar.isValid() ? new RogerArray(this.value.parseInt().countArray(), replaceVar).replace() : null;
 }
 
-// User interface logic
-
 // HtmlDivElement Method that removes add child elements
+
 HTMLDivElement.prototype.removeChildAll = function() {
   while (this.lastChild) {
     this.removeChild(this.lastChild);
