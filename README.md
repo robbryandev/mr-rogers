@@ -49,6 +49,28 @@ Code:
 Expected Output: [0, "Beep!", "Boop!", "Won't you be my neighbor?", 4, 5, 6, 7, 8, 9, "Beep!", "Beep!", "Boop!", "Won't you be my neighbor?", "Beep!"]
 ```
 
+#### ReplaceObject.prototype.isValid()
+
+```
+Test: Check if a valid ReplaceObject passes
+Code:
+  const numReplace = [1, 2, 3];
+  const strReplace = ["Beep!", "Boop!", "Won't you be my neighbor?"];
+  const replaceValues = new ReplaceObject(numReplace, strReplace);
+  replaceValues.isValid();
+Expected Output: true
+```
+
+```
+Test: Check if an invalid ReplaceObject passes
+Code:
+  const numReplace = [1, 2];
+  const strReplace = ["Beep!", "Boop!", "Won't you be my neighbor?"];
+  const replaceValues = new ReplaceObject(numReplace, strReplace);
+  replaceValues.isValid();
+Expected Output: false
+```
+
 ## License info
 
 MIT License
