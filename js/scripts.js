@@ -67,6 +67,7 @@ Number.prototype.countArray = function () {
   return res.length > 0 ? res : [0];
 };
 
+// Number method that uses the provided number as a max for Math.random
 Number.prototype.random = function() {
   return Math.floor(Math.random() * this);
 }
@@ -88,6 +89,7 @@ HTMLDivElement.prototype.removeChildAll = function() {
   }
 }
 
+// handle form submission
 function submitForm(event) {
   event.preventDefault();
   const formNum = document.getElementById("user-number");
@@ -96,7 +98,8 @@ function submitForm(event) {
   const textArray = formNum.getTextArray();
   if (textArray) {
     textArray.forEach(function(val) {
-      let word = document.createElement("p");
+      let word = document.createElement("li");
+      word.setAttribute("class", "list-group-item w-75 m-auto");
       word.innerText = val;
       resElement.appendChild(word);
     });
