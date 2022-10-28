@@ -71,6 +71,24 @@ Code:
 Expected Output: false
 ```
 
+#### String.prototype.parseInt()
+
+```
+Test: Check if a number in a string returns a number
+Code:
+  const test = "5";
+  test.parseInt();
+Expected Output: 5
+```
+
+```
+Test: Check if a string returns 0 for a NaN string
+Code:
+  const test = "abc";
+  test.parseInt();
+Expected Output: 0;
+```
+
 ## License info
 
 MIT License
