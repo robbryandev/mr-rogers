@@ -6,7 +6,7 @@
 
 ## Description
 
-
+A simple web app that creates a number list from x to y. and replacing the the number with a string based on the number contained inside.
 
 ## Technologies Used
 
@@ -20,6 +20,8 @@
 Just download this repo and open up index.html in your browser of choice.
 
 ## Known bugs
+
+* None
 
 ## Tests
 
