@@ -23,9 +23,27 @@ Just download this repo and open up index.html in your browser of choice.
 
 ## Tests
 
-Describe: toPigLatin();
+Describe: RogerArray.prototype.replace();
 
-Test: "Starts with a number" Code: toPigLatin("30test"); Expected Output: "30test"
+Test: Check if a number returns desired array replacements
+Code:
+  const num = 5;
+  const numReplace = [1, 2, 3];
+  const strReplace = ["Beep!", "Boop!", "Won't you be my neighbor?"];
+  const replaceValues = new ReplaceObject(numReplace, strReplace);
+  const rogers = new RogerArray(num.countArray(), replaceValues);
+  rogers.replace();
+Expected Output: [0, "Beep!", "Boop!", "Won't you be my neighbor?", 4, 5]
+
+Test: Check if replace order breaks with numbers higher than 10
+Code:
+  const num = 14;
+  const numReplace = [1, 2, 3];
+  const strReplace = ["Beep!", "Boop!", "Won't you be my neighbor?"];
+  const replaceValues = new ReplaceObject(numReplace, strReplace);
+  const rogers = new RogerArray(num.countArray(), replaceValues);
+  rogers.replace();
+Expected Output: [0, "Beep!", "Boop!", "Won't you be my neighbor?", 4, 5, 6, 7, 8, 9, "Beep!", "Beep!", "Boop!", "Won't you be my neighbor?", "Beep!"]
 
 ## License info
 

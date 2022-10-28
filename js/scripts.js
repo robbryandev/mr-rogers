@@ -28,8 +28,7 @@ class RogerArray {
     this.numCountArray = numCountArray.map(function (num) {
       return Number(num);
     });
-    this.repObject =
-      typeof repObject === "object" ? repObject : new ReplaceObject([0], [""]);
+    this.repObject = typeof repObject === "object" ? repObject : new ReplaceObject([0], [""]);
   }
 }
 
@@ -39,12 +38,12 @@ RogerArray.prototype.replace = function () {
   this.numCountArray.forEach(function (num) {
     const rep = self.repObject;
     let replaced = false;
-    rep.numArray.forEach(function (repNum) {
-      if (`${num}`.includes(`${repNum}`)) {
+    for (let i = rep.numArray.length - 1; i >= 0; i--) {
+      if (`${num}`.includes(`${rep.numArray[i]}`) && !replaced) {
         replaced = true;
-        res.push(rep.strArray[rep.numArray.indexOf(repNum)]);
+        res.push(rep.strArray[i]);
       }
-    });
+    }
     if (!replaced) {
       res.push(num);
     }
