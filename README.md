@@ -23,8 +23,9 @@ Just download this repo and open up index.html in your browser of choice.
 
 ## Tests
 
-Describe: RogerArray.prototype.replace();
+#### RogerArray.prototype.replace()
 
+```
 Test: Check if a number returns desired array replacements
 Code:
   const num = 5;
@@ -34,7 +35,9 @@ Code:
   const rogers = new RogerArray(num.countArray(), replaceValues);
   rogers.replace();
 Expected Output: [0, "Beep!", "Boop!", "Won't you be my neighbor?", 4, 5]
+```
 
+```
 Test: Check if replace order breaks with numbers higher than 10
 Code:
   const num = 14;
@@ -44,6 +47,7 @@ Code:
   const rogers = new RogerArray(num.countArray(), replaceValues);
   rogers.replace();
 Expected Output: [0, "Beep!", "Boop!", "Won't you be my neighbor?", 4, 5, 6, 7, 8, 9, "Beep!", "Beep!", "Boop!", "Won't you be my neighbor?", "Beep!"]
+```
 
 ## License info
 
